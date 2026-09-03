@@ -1,0 +1,21 @@
+apiVersion: metal3.io/v1alpha1
+kind: BareMetalHost
+metadata:
+  name: bmh1
+  namespace:  bmaas
+spec:
+  online: true
+  rootDeviceHints:
+    deviceName: /dev/vda
+  bootMACAddress: 52:54:00:0b:55:ff
+  bmc:
+    address: redfish-virtualmedia+http://192.168.50.1:8000/redfish/v1/Systems/50d77a51-0997-40b4-9417-a53b69fb9414
+    credentialsName: bmh1-bmc-secret
+  image:
+    checksum: 'http://192.168.50.1:8080/templates/rhel9.qcow2.sha512sum'
+    checksumType: auto
+    url: 'http://192.168.50.1:8080/templates/rhel9.qcow2'
+  userData:
+    name: bmh1-user-data
+  networkData:
+    name: bmh1-network-data

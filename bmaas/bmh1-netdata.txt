@@ -1,0 +1,11 @@
+links:
+  - id: enp1s0
+    type: phy
+    ethernet_mac_address: 52:54:00:0b:55:ff
+networks:
+  - id: enp1s0
+    link: enp1s0
+    type: ipv4_dhcp
+services:
+  - type: dns
+    address: 185.12.64.2

@@ -1,0 +1,12 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ovs-share-same-gw-bridge
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/worker: ""
+  desiredState:
+    ovn:
+      bridge-mappings:
+        - localnet: providerNetwork
+          bridge: br-ex

@@ -1,0 +1,9 @@
+#cloud-config
+users:
+  - name: core
+    sudo: ["ALL=(ALL) NOPASSWD:ALL"]
+    ssh_authorized_keys:
+      - ssh-rsa 
+    shell: /bin/bash
+    groups: [adm, sudo]
+    lock_passwd: true

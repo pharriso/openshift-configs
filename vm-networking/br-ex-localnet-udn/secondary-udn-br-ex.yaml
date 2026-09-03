@@ -1,0 +1,17 @@
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: cudn-br-ex
+spec:
+  namespaceSelector:
+    matchExpressions:
+    - key: kubernetes.io/metadata.name
+      operator: In
+      values: ["hosted-vms", "virt-vms"]
+  network:
+    topology: Localnet
+    localnet:
+        role: Secondary
+        physicalNetworkName: providerNetwork
+        ipam:
+          mode: Disabled

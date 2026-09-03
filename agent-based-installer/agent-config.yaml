@@ -1,0 +1,180 @@
+apiVersion: v1beta1
+kind: AgentConfig
+metadata:
+  name: agent
+rendezvousIP: 192.168.50.22  
+hosts: 
+  - hostname: controlplane0
+    role: master
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:10
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:10
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.22
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
+  - hostname: controlplane1
+    role: master
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:11
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:11
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.23
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
+  - hostname: controlplane2
+    role: master
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:12
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:12
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.24
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
+  - hostname: worker0
+    role: worker
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:13
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:13
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.25
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
+  - hostname: worker1
+    role: worker
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:14
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:14
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.26
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
+  - hostname: worker2
+    role: worker
+    interfaces:
+      - name: enp1s0
+        macAddress: 52:54:00:c9:e9:15
+    rootDeviceHints: 
+      deviceName: /dev/vda
+    networkConfig: 
+      interfaces:
+        - name: enp1s0
+          type: ethernet
+          state: up
+          mac-address: 52:54:00:c9:e9:15
+          ipv4:
+            enabled: true
+            address:
+              - ip: 192.168.50.27
+                prefix-length: 24
+            dhcp: false
+      dns-resolver:
+        config:
+          server:
+            - 192.168.50.1 
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 192.168.50.1
+            next-hop-interface: enp1s0
+            table-id: 254
