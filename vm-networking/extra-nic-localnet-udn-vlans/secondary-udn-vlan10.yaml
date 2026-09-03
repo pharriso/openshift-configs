@@ -1,0 +1,21 @@
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: cudn-vlan10
+spec:
+  namespaceSelector:
+    matchExpressions:
+    - key: kubernetes.io/metadata.name
+      operator: In
+      values: ["virt-vms"]
+  network:
+    topology: Localnet
+    localnet:
+        role: Secondary
+        physicalNetworkName: providerNetwork
+        ipam:
+          mode: Disabled
+        vlan:
+          mode: Access
+          access:
+            id: 10

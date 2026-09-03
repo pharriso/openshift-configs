@@ -1,0 +1,25 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: br-vm
+spec:
+  nodeSelector:
+    node-role.kubernetes.io/master: '' 
+  desiredState:
+    interfaces:
+    - name: br-vm
+      description: |-
+        A dedicated ovs bridge for external VM traffic
+      type: ovs-bridge
+      state: up
+      bridge:
+        allow-extra-patch-ports: true
+        options:
+          stp: false
+        port:
+        - name: enp8s0 
+    ovn:
+      bridge-mappings:
+      - localnet: providerNetwork
+        bridge: br-vm
+        state: present
