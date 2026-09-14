@@ -1,7 +1,7 @@
 # OpenShift BGP lab
 
 This repo contains some samples for setting up BGP and route advertisements for OCP with user defined networks. 
-![image](images/bgp-lab.excalidraw)
+![image](images/bgp-lab.png)
 
 ## Run frr container
 
