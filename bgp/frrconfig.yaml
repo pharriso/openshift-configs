@@ -1,0 +1,16 @@
+apiVersion: frrk8s.metallb.io/v1beta1
+kind: FRRConfiguration
+metadata:
+  name: receive-all
+  namespace: openshift-frr-k8s
+spec:
+  bgp:
+    routers:
+    - asn: 65000
+      neighbors:
+      - address: 192.168.50.1
+        asn: 65000
+        disableMP: true
+        toReceive:
+          allowed:
+            mode: all
