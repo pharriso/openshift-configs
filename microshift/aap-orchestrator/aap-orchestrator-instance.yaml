@@ -1,0 +1,18 @@
+apiVersion: aap.ansible.com/v1alpha1
+kind: AutomationOrchestrator
+metadata:
+  name: my-orchestrator
+  namespace: automation-orchestrator
+spec:
+  postgres:
+    host: 192.168.50.200
+    port: 5432
+    sslMode: disable
+    backendDatabase:
+      secretRef:
+        name: orchestrator-pg-credentials
+    temporalDatabase:
+      secretRef:
+        name: temporal-pg-credentials
+  ingress:
+    host: orchestrator.pharriso.co.uk

@@ -1,0 +1,29 @@
+apiVersion: aap.ansible.com/v1alpha1
+kind: AnsibleAutomationPlatform
+metadata:
+  name: aap
+  namespace: ansible-automation-platform
+spec:
+  # Platform
+  image_pull_policy: IfNotPresent
+  # Components
+  controller:
+    disabled: false
+  eda:
+    disabled: true
+  hub:
+    disabled: true
+    ## Modify to contain your RWM storage class name
+    storage_type: file
+    file_storage_storage_class: <your-read-write-many-storage-class>
+    file_storage_size: 10Gi
+
+    ## uncomment if using S3 storage for Content pod
+    # storage_type: S3
+    # object_storage_s3_secret: example-galaxy-object-storage
+
+    ## uncomment if using Azure storage for Content pod
+    # storage_type: azure
+    # object_storage_azure_secret: azure-secret-name
+  lightspeed:
+    disabled: true
