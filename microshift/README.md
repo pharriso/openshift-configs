@@ -73,9 +73,9 @@ oc get no
 oc get po -A
 ```
 
-Node should show "Ready" and pods should reach a running state.
+Node should show Ready and pods should reach a running state.
 
-## Install operators - define OLM catalogsource
+## Define OLM catalogsource
 
 Define required operator catalog sources. An example catalogsource CR for Red Hat operators is in this repo.
 
@@ -130,7 +130,7 @@ Check you can login to the AAP instance. Grab the admin password from the secret
 oc extract secret/aap-admin-password --to=-
 ```
 
-Browse to your route e.g. https://aap.pharriso.co.uk and login!
+Browse to your route and login!
 
 
 ## Deploying Automation Orchestrator
