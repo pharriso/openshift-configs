@@ -75,7 +75,7 @@ oc get po -A
 
 Node should show Ready and pods should reach a running state.
 
-## Define OLM catalogsource
+## Define OLM catalogsource
 
 Define required operator catalog sources. An example catalogsource CR for Red Hat operators is in this repo.
 
