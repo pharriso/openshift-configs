@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1 
+kind: NetworkPolicy 
+metadata: 
+  name: allow-external-secrets-https-egress 
+  namespace: external-secrets 
+spec: 
+  podSelector: 
+    matchLabels: 
+      app.kubernetes.io/name: external-secrets 
+  policyTypes: 
+  - Egress 
+  egress: 
+  - to: 
+    - ipBlock: 
+        cidr: 0.0.0.0/0 
+    ports: 
+    - protocol: TCP 
+      port: 80 
+    - protocol: TCP 
+      port: 443 
+    - protocol: UDP 
+      port: 53 
+    - protocol: TCP 
+      port: 53 
+    - protocol: TCP 
+      port: 8200 
