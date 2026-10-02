@@ -28,11 +28,11 @@ podman run --name vault -v /vault:/vault:Z --cap-add=IPC_LOCK --privileged -d -p
 
 Browse to vault on port 8200. You will need to do an initialisation and then unseal the vault. Save the vault config from the browser and keep it safe.
 
-## Deploy eso operator
+## Deploy eso operator
 
 Install eso operator. 
 
-## Configure eso network policy
+## Configure network policy
 
 External secrets operator puts tight controls around network policy. The example network policy allows http, https, dns and port 8200 for vault
 
