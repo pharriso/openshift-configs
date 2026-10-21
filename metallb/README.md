@@ -62,7 +62,14 @@ oc apply -f l2-advertisement-vlan20.yaml
 
 ### Test the deployment
 
-Deploy app1
+When creating a LoadBalancer service with MetalLB, you can add annotations to request specific IP addresses or address from a specific IP Pool. In this example we will request a specific pool with this annotation on the Service config:
+
+```
+  annotations:
+    metallb.io/address-pool: ip-addresspool-vlan20
+```
+
+Deploy app1 which will use vlan10 for loadbalancing:
 
 
 ```
@@ -71,7 +78,8 @@ oc create deployment app1 --image registry.redhat.io/rhel8/httpd-24:latest
 oc apply -f expose-app1-vlan10.yaml
 ```
 
-Deploy app2
+
+Deploy app2 which will use vlan10 for loadbalancing:
 
 
 ```
@@ -82,11 +90,18 @@ oc apply -f expose-app2-vlan20.yaml
 
 Check the services. You should see addresses from the relevant pools as the EXTERNAL-IP:
 
+Here is app1 with an IP on vlan10:
+
 ```
 oc get svc -n app1
 NAME           TYPE           CLUSTER-IP      EXTERNAL-IP    PORT(S)        AGE
 app1-service   LoadBalancer   172.32.248.80   10.250.0.100   80:30800/TCP   2m41s
+```
 
+And app2 with an IP on vlan20:
+
+
+```
 oc get svc -n app2
 NAME           TYPE           CLUSTER-IP       EXTERNAL-IP    PORT(S)        AGE
 app2-service   LoadBalancer   172.32.123.221   10.251.0.100   80:31370/TCP   6s
