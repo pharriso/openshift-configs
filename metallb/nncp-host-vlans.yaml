@@ -1,0 +1,108 @@
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: controlplane0-metallb
+spec:
+  nodeSelector: 
+    kubernetes.io/hostname: controlplane0
+  desiredState:
+    interfaces:
+    - name: enp8s0.10
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.250.0.10
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 10
+    - name: enp8s0.20
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.251.0.10
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 20
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: controlplane1-metallb
+spec:
+  nodeSelector: 
+    kubernetes.io/hostname: controlplane1
+  desiredState:
+    interfaces:
+    - name: enp8s0.10
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.250.0.11
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 10
+    - name: enp8s0.20
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.251.0.11
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 20
+---
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: controlplane2-metallb
+spec:
+  nodeSelector: 
+    kubernetes.io/hostname: controlplane2
+  desiredState:
+    interfaces:
+    - name: enp8s0.10
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.250.0.12
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 10
+    - name: enp8s0.20
+      description: VLAN using enp8s0 
+      type: vlan 
+      state: up 
+      ipv4:
+        dhcp: false
+        address:
+        - ip: 10.251.0.12
+          prefix-length: 24
+        enabled: true
+      vlan:
+        base-iface: enp8s0 
+        id: 20

@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: app2-service
+  namespace: app2
+  annotations:
+    metallb.io/address-pool: ip-addresspool-vlan20
+spec:
+  type: LoadBalancer
+  selector:
+    app: app2
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080

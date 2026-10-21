@@ -1,0 +1,10 @@
+apiVersion: metallb.io/v1beta1
+kind: IPAddressPool
+metadata:
+  name: ip-addresspool-vlan20
+  namespace: metallb-system
+spec:
+  addresses:
+    - 10.251.0.100-10.251.0.200
+  autoAssign: true
+  avoidBuggyIPs: false
