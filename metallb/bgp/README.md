@@ -2,7 +2,7 @@
 
 In this example, MetalLB is configured in BGP mode to peer with an upstream router.
 
-![image](images/metallb-bgp.png)
+![image](../images/metallb-bgp.png)
 
 This assumes you have deployed the MetalLB operator and an instance of MetalLB.
 
@@ -17,7 +17,7 @@ metadata:
   name: metallb-bgp-peer
   namespace: metallb-system
 spec:
-  myASN: 65000
+  myASN: 64500
   peerASN: 65000
   peerAddress: 192.168.50.1
 ```

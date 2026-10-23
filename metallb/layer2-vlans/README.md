@@ -2,7 +2,7 @@
 
 In this example, MetalLB is configured in layer2 mode with separate VLANs / address pools configured.
 
-![image](images/metallb-layer2-vlan.png)
+![image](../images/metallb-layer2-vlan.png)
 
 This assumes you have deployed the MetalLB operator and an instance of MetalLB.
 
