@@ -1,14 +1,14 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: weather-service
-  namespace: httpd
+  name: app1-service
+  namespace: app1
   annotations:
-    metallb.io/address-pool: ip-addresspool-vlan20
+    metallb.io/address-pool: bgp-address-pool
 spec:
   type: LoadBalancer
   selector:
-    app: weathernow
+    app: app1
   ports:
     - protocol: TCP
       port: 80
