@@ -2,6 +2,12 @@
 
 This repo contains some samples for setting up MetalLB.
 
+## MetalLB layer2
+
+[MetalLB in layer2](layer2)
+
+![image](images/metallb-layer2.png)
+
 ## MetalLB layer2 with vlans
 
 [MetalLB in layer2 mode with vlan separation](layer2-vlans)
