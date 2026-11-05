@@ -18,3 +18,7 @@ This repo contains some example network configurations for connecting VMs to the
 [Extra network bond with vlans](bond-localnet-udn-vlans)
 
 ![image](images/bond-localnet-udn-vlans.png)
+
+[Linux Bridge](linux-bridge)
+
+![image](images/linux-bridge.png)
