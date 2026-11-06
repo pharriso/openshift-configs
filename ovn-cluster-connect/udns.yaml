@@ -1,0 +1,59 @@
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: blue-network
+  labels:
+    blue-to-green: connect
+    blue-to-red: connect
+spec:
+  namespaceSelector:
+    matchLabels:
+      network: blue
+  network:
+    topology: Layer2
+    layer2:
+      role: Primary
+      subnets: 
+      - 192.168.200.0/24
+      ipam: 
+        lifecycle: Persistent
+---
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: green-network
+  labels:
+    blue-to-green: connect
+spec:
+  namespaceSelector:
+    matchLabels:
+      network: green
+  network:
+    topology: Layer2
+    layer2:
+      role: Primary
+      subnets:
+      - 192.168.210.0/24
+      ipam:
+        lifecycle: Persistent
+   
+---
+apiVersion: k8s.ovn.org/v1
+kind: ClusterUserDefinedNetwork
+metadata:
+  name: red-network
+  labels:
+    blue-to-red: connect
+spec:
+  namespaceSelector:
+    matchLabels:
+      network: red
+  network:
+    topology: Layer2
+    layer2:
+      role: Primary
+      subnets:
+      - 192.168.220.0/24
+      ipam:
+        lifecycle: Persistent
+   

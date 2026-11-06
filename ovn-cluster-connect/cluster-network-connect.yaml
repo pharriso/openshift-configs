@@ -1,0 +1,35 @@
+apiVersion: k8s.ovn.org/v1
+kind: ClusterNetworkConnect
+metadata:
+  name: blue-green-connect
+spec:
+  networkSelectors:
+    - networkSelectionType: ClusterUserDefinedNetworks
+      clusterUserDefinedNetworkSelector:
+        networkSelector:
+          matchLabels:
+            blue-to-green: connect
+  connectSubnets:
+  - cidr: "10.10.0.0/24"
+    networkPrefix: 28
+  connectivity:
+    - PodNetwork
+    - ServiceNetwork
+---
+apiVersion: k8s.ovn.org/v1
+kind: ClusterNetworkConnect
+metadata:
+  name: blue-red-connect
+spec:
+  networkSelectors:
+    - networkSelectionType: ClusterUserDefinedNetworks
+      clusterUserDefinedNetworkSelector:
+        networkSelector:
+          matchLabels:
+            blue-to-red: connect
+  connectSubnets:
+  - cidr: "10.20.0.0/24"
+    networkPrefix: 28
+  connectivity:
+    - PodNetwork
+    - ServiceNetwork
